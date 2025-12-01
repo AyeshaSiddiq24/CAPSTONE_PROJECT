@@ -53,8 +53,6 @@ Generates multiple professional content formats:
 
 🎯 Quiz (Knowledge Check)
 
-👶 Kid-Friendly Explanation
-
 ✔ End-to-End Autonomous Pipeline
 
 Input → Research → Summaries → Multi-format Output
@@ -62,42 +60,82 @@ No manual intervention needed.
 
 ## 🧩 System Architecture
 
+
+
 ## 📦 Installation
-  1️⃣ Install dependencies (Colab or local Python)
-     pip install google-genai ddgs
 
- 2️⃣ Set your Gemini API key
-    from google import genai
-    client = genai.Client(api_key="YOUR_API_KEY")
-## 🧠 How It Works (Agent Flow)
+Clone the repository:
 
-1. Supervisor Agent
+ git clone <your-repo-url>
+ cd CAPSTONE_PROJECT
 
-Handles:
 
-Input prompts
+Create & activate virtual environment:
 
-Execution order
+ python3 -m venv venv
+ source venv/bin/activate  # macOS/Linux
+ # venv\Scripts\activate    # Windows
 
-Aggregation of outputs
 
-2. Researcher Agent
+Install dependencies:
+
+pip install -r requirements.txt
+# or manually:
+pip install google-generativeai ddgs streamlit python-pptx python-dotenv
+
+
+Set your Gemini API key:
+
+Create a .env file in the root folder:
+
+GEMINI_API_KEY=YOUR_ACTUAL_KEY_HERE
+
+
+⚠️ Important: Without a valid API key, agents will return empty outputs.
+
+##🧠 How It Works (Agent Flow)
+Supervisor Agent
+
+Handles input prompts
+
+Manages execution order
+
+Aggregates outputs from sub-agents
+
+Researcher Agent
 search_results = ddgs.text(query)
 keypoints = extract_keypoints(search_results)
 summary = gemini.generate_content(...)
 
-3. Writer Agent
+Writer Agent
 
 Uses structured research output to generate:
-["full_report", "summary", "slides", "linkedin", "quiz"]
-Gemini produces well-formatted, professional outputs.
 
-## ▶️ Usage Example
-Run the entire pipeline:
-result = supervisor_agent("Future of AI agents")
-print(result)
+["full_report", "summary", "slides", "linkedin", "quiz", "kid_friendly"]
 
-Output includes:
+
+Gemini produces professional, formatted outputs
+
+Slides are automatically converted to PowerPoint (.pptx)
+
+▶️ Usage Example
+from supervisor_agent import supervisor_agent
+import asyncio
+
+result = asyncio.run(supervisor_agent("Future of AI Agents"))
+
+print(result["full_report"])
+print(result["short_summary"])
+print(result["slides"])
+print(result["linkedin"])
+
+
+Streamlit usage:
+
+streamlit run streamlit_app.py
+
+
+##Outputs:
 
 Full Report
 
@@ -107,43 +145,53 @@ Slide Deck Outline
 
 LinkedIn Post
 
-Quiz
 
-## 🛠 Tools & Technologies
+
+Downloadable PowerPoint (.pptx)
+
+##🛠 Tools & Technologies
 Component	Purpose
 Google Gemini 2.5 Flash	LLM for summarization & content generation
 DDGS (DuckDuckGo Search)	Privacy-friendly web search
-Python (Colab)	Development & execution
-Multi-Agent Design Patterns	Sequential pipeline automation
+Python (Colab / Local)	Development & execution
+Streamlit	Frontend & interactive UI
+python-pptx	Generate PowerPoint slides automatically
+Multi-Agent Design Patterns	Sequential workflow automation
 
-## ⭐ Example Output Snippets
+##⭐ Example Output Snippets
 
-## 🌟 Why This Project Matters
-
-This agent demonstrates:
-
-Real, practical automation of complex workflows
-
-How multiple LLM agents can coordinate
-
-The power of Gemini 2.5 Flash for multi-format content generation
-
-A foundation for enterprise-grade agentic systems
-
-## 🚀 Future Enhancements
-
-If more time were available:
-
-Add memory (session state) to maintain long-term topics
-
-Add database logging of research results
-
-Add front-end UI (Streamlit / Flask)
-
-Deploy as an always-available cloud agent
-
-Add parallel sub-agents for deeper research
-
-Integrate RAG for document-level search
+6-bullet executive summary
 
 
+10-slide presentation outline
+
+
+Viral LinkedIn post
+
+
+Full research report
+
+
+##🌟 Why This Project Matters
+
+Demonstrates practical automation of complex workflows
+
+Shows multi-agent coordination in real-world tasks
+
+Illustrates the power of Gemini Flash for professional multi-format content generation
+
+Foundation for enterprise-grade agentic systems
+
+##🚀 Future Enhancements
+
+Add memory / session state for long-term topic tracking
+
+Database logging of research results
+
+Deploy front-end UI (Streamlit / Flask) online
+
+Parallel sub-agents for deeper research
+
+RAG integration for document-level retrieval
+
+Add AI-generated images into slides
