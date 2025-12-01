@@ -60,7 +60,7 @@ No manual intervention needed.
 
 ## 🧩 System Architecture
 
-
+![System Architecture](images/systemarchitecture.png)
 
 ## 📦 Installation
 
