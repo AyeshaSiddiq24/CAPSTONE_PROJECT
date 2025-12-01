@@ -160,17 +160,19 @@ Multi-Agent Design Patterns	Sequential workflow automation
 
 ##⭐ Example Output Snippets
 
-6-bullet executive summary
+###6-bullet executive summary
 
+![Summary](outputs/summary.jpg)
 
-10-slide presentation outline
+###10-slide presentation outline
 
+![Slides](outputs/slides.jpg)
 
-Viral LinkedIn post
+###Viral LinkedIn post
+![LinkediIn](outputs/linkedin.jpg)
 
-
-Full research report
-
+###Full research report
+![Full Report](outputs/fullreport.jpg)
 
 ##🌟 Why This Project Matters
 
