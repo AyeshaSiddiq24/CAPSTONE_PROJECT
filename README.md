@@ -135,7 +135,9 @@ Streamlit usage:
 streamlit run streamlit_app.py
 
 
-##Outputs:
+Outputs:
+
+![Mainapp](outputs/mainapp.jpg)
 
 Full Report
 
